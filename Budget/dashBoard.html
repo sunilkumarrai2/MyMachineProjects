@@ -1,0 +1,182 @@
+   <div class="row">
+                 <h1 class="text-center" ng-bind="heading"></h1>
+    </div>
+
+   <div class="row" ng-hide="budgetExists">
+       <br><br><br><br><br>
+       <hr>
+                 <div class="well">
+                     <div class="row">
+                         <div class="col-sm-4">
+                             <h4 class="text-center text-danger">No budget Exists for {{budgetMonth.budget_month}} </h4>
+                         </div>
+                         <div class="col-sm-4" class="alert alert-success text-center">
+                             <select class="form-control selectpicker" ng-model="budgetMonth" ng-change="getBudgetDetailsByUserIdAndTimeperiod()" ng-options="item.budget_month for item in allTimePeriods">
+                                <option value="" disabled selected> {{budgetMonth.budget_month}} </option>
+                            </select>
+                         </div>
+                         <div class="col-sm-4">
+                             <h4>&nbsp &nbsp &nbsp &nbsp<a href="#!DesignBudget">Click here to create one</a></h4>
+                         </div>
+                     </div>
+                 </div>
+    </div>
+   <hr>
+    <div class="row" ng-show="budgetExists">
+        <!--EXPENSES-->
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-4">
+                    <select class="form-control selectpicker" ng-model="budgetMonth" ng-change="getBudgetDetailsByUserIdAndTimeperiod()" ng-options="item.budget_month for item in allTimePeriods">
+                        <option value="" disabled selected> {{budgetMonth.budget_month}} </option>
+                    </select>
+                </div>
+                <div class="col-sm-4"><h4 class="text-center" ng-class="(totalExpensesForCurrentMonth > totalBudgetForCurrentMonth)?'negative':'text-primary'">Expenses (${{totalExpensesForCurrentMonth}})</h4></div>
+                <!--<div class="col-sm-4"><span class="label label-info float-sm-none">{{budgetMonth.budget_month}}</span></div>-->
+            </div>
+             <!--<h4 class="text-center">Expenses</h4>-->
+            <hr>
+
+            <div class="well">
+                <!--<div class="form-group row">-->
+                    <!--<div class="col-xs-4">-->
+                        <!--<input class="form-control" id="ex1" type="text" ng-model="expense_name" placeholder="name">-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-3">-->
+                        <!--<input class="form-control" id="ex2" type="number" ng-model="amount" placeholder="price">-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-3">-->
+                        <!--<select class="form-control" ng-model="category" ng-options="item.category_name for item in categories">-->
+                            <!--<option value="" disabled selected> Select Category </option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<button type="button" class="btn btn-primary" ng-click="addExpense()" ng-disabled = "disabledAddExpenseButton()">-->
+                        <!--<span class="glyphicon glyphicon-plus"></span> Add-->
+                    <!--</button>-->
+                <!--</div>-->
+
+                <!--NOTIFICATION AREA-->
+                    <div ng-show="showAddNewExpenseStatus"class="{{addNewExpenseStatusDiv}}" ng-bind-html="addNewExpenseStatus"></div> <br>
+                <!--NOTIFICATION AREA-->
+                <div>
+                    <!--*************************-->
+                        <table class="table table-responsive table-condensed">
+                            <thead>
+                                <tr>
+                                    <td><input class="form-control" id="ex1" type="text" ng-model="expense_name" placeholder="name"></td>
+                                    <td>
+                                        <select class="form-control" ng-model="category" ng-options="item.category_name for item in categories">
+                                            <option value="" disabled selected> Select Category </option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" id="ex2" type="number" ng-model="amount" placeholder="price">
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" ng-click="addExpense()" ng-disabled = "disabledAddExpenseButton()">
+                                            <span class="glyphicon glyphicon-plus"></span> Add
+                                        </button>
+                                    </td>
+                                </tr>
+                            </thead>
+                        <!--</table>-->
+                    <!--********************************-->
+                    <!--<table class="table table-condensed">-->
+                    <!--<thead>-->
+                        <!--<tr>-->
+                            <!--<th>Name</th>-->
+                            <!--<th>Category</th>-->
+                            <!--<th>Amount</th>-->
+                            <!--<th>Date</th>-->
+                        <!--</tr>-->
+                    <!--</thead>-->
+                    <tbody>
+                        <tr ng-repeat="item in expenses | orderBy : '-expense_date'">
+                            <!--// e.expense_id ,e.expense_name,e.category_id,c.category_name,e.amount,e.budget_id,e.expense_date-->
+                            <td class="text-center">{{item.expense_name}}</td>
+                            <td class="text-center">{{item.category_name}}</td>
+                            <td class="text-center">{{item.amount}}</td>
+                            <td>{{item.expense_date}}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- {{budgetMonth}} <br> -->
+            <!--{{budgetAllotted}} <br>-->
+            <!--{{expense_name}} <br>-->
+            <!--{{amount}} <br>-->
+            <!--{{category}} <br>-->
+            <!--{{consolidatedExpenses}} <br>-->
+            <!--{{budgetAllotted}} <br>-->
+            <!--{{totalExpensesForCurrentMonth}} <br>-->
+            <!--{{totalBudgetForCurrentMonth}} <br>-->
+            <!--{{balanceTable}}  <br>-->
+           
+       </div>
+
+        <!--Balance-->
+        <div class="col-sm-3">
+            <h4 class="text-center" ng-class="(totalExpensesForCurrentMonth > totalBudgetForCurrentMonth)?'negative':'text-success'">Balance ($ {{totalBudgetForCurrentMonth - totalExpensesForCurrentMonth}})</h4>
+        <hr>
+            <div class="well">
+                <table class="table table-responsive table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in balanceTable" ng-class="{negative:item.balance < 0}">
+                            <td>{{item.category_name}}</td>
+                            <td>{{item.balance}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--Consolidated Expense-->
+        <div class="col-sm-3">
+            <h4 class="text-center text-primary">Consolidated Expense</h4>
+                <hr>
+            <div class="well">
+                <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in consolidatedExpenses">
+                            <td>{{item.category_name}}</td>
+                            <td>{{item.amount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--BUDGET-->
+            <h4 class="text-center text-warning">Budget Allotted (${{totalBudgetForCurrentMonth}})</h4>
+                <hr>
+            <div class="well">
+                <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in budgetAllotted">
+                            <td>{{item.category_name}}</td>
+                            <td class="text-center">{{item.default_amount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

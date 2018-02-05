@@ -1,0 +1,64 @@
+.gallery {
+  padding: 0;
+}
+
+.gallery li {
+  display: inline-block;
+  margin: 0 1em 1em 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .gallery li {
+    margin: 0;
+  }
+}
+
+.gallery1 img {
+  width: 200px;
+  height: 150px;
+}
+
+.gallery2 img {
+  width: 6em;
+}
+
+.gallery5 img {
+  width: 120px;
+  /*width: 240px;*/
+  /*height: 150px;*/
+}
+
+/*This was required to not display the 'open in new tab' button from Modal window*/
+.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+    border-radius: 0;
+    display: none;
+}
+
+/*This was required to make the individual page heading be in center*/
+.col-lg-12 {text-align: center}
+
+/* It is to make some margin(from left) for HOME button in nav. It was needed to make it look in mobile screen*/
+.navbar-brand>span {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+
+/*below is for email sent status div*/
+.result{
+    background-color: #999999;
+    margin-left: 110px;
+    margin-right: 40px;
+    height: 50px;
+    padding-top: 12px;
+    padding-left: 80px;
+    color: aliceblue;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
+
+.fade.ng-hide {
+  opacity: 0;
+}

@@ -1,0 +1,38 @@
+[
+        {
+            "url": "images/specialFx/3.jpg",
+            "thumbUrl": "images/specialFx/Thumbernail/3_120x175.jpg",
+            "height": "150px",
+            "width": "150px"
+        },
+        {
+            "url": "images/specialFx/5.jpg",
+            "thumbUrl": "images/specialFx/Thumbernail/5_120x175.jpg",
+            "height": "150px",
+            "width": "150px"
+        },
+        {
+            "url": "images/specialFx/1.jpg",
+            "thumbUrl": "images/specialFx/Thumbernail/1_240x175.jpg",
+            "height": "150px",
+            "width": "150px"
+        },
+        {
+            "url": "images/specialFx/2.jpg",
+            "thumbUrl": "images/specialFx/Thumbernail/2_240x175.jpg",
+            "height": "150px",
+            "width": "150px"
+        },
+        {
+            "url": "images/specialFx/4.JPG",
+            "thumbUrl": "images/specialFx/Thumbernail/4_240x175.jpg",
+            "height": "150px",
+            "width": "150px"
+        },
+        {
+            "url": "images/specialFx/6.jpg",
+            "thumbUrl": "images/specialFx/Thumbernail/6_240x175.jpg",
+            "height": "150px",
+            "width": "150px"
+        }
+]

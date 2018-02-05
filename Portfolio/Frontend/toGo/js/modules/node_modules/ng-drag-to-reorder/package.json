@@ -1,0 +1,91 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ng-drag-to-reorder",
+        "scope": null,
+        "escapedName": "ng-drag-to-reorder",
+        "name": "ng-drag-to-reorder",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/r630166/Downloads/Learn/Harshita website"
+    ]
+  ],
+  "_from": "ng-drag-to-reorder@latest",
+  "_id": "ng-drag-to-reorder@1.0.6",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/ng-drag-to-reorder",
+  "_nodeVersion": "6.10.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/ng-drag-to-reorder-1.0.6.tgz_1503949658496_0.20733923697844148"
+  },
+  "_npmUser": {
+    "name": "mhthompson86",
+    "email": "mthompson@instant-tech.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ng-drag-to-reorder",
+    "scope": null,
+    "escapedName": "ng-drag-to-reorder",
+    "name": "ng-drag-to-reorder",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-drag-to-reorder/-/ng-drag-to-reorder-1.0.6.tgz",
+  "_shasum": "33eeee3607897c510c0e56f2db57e6c8a6fea477",
+  "_shrinkwrap": null,
+  "_spec": "ng-drag-to-reorder",
+  "_where": "/Users/r630166/Downloads/Learn/Harshita website",
+  "author": {
+    "name": "MacGregor Thompson",
+    "email": "mhthompson86@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/mhthompson86/ng-drag-to-reorder/issues"
+  },
+  "dependencies": {},
+  "description": "Lightweight AngularJS drag and drop functionality to reorder lists without any dependencies other than Angular.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "33eeee3607897c510c0e56f2db57e6c8a6fea477",
+    "tarball": "https://registry.npmjs.org/ng-drag-to-reorder/-/ng-drag-to-reorder-1.0.6.tgz"
+  },
+  "gitHead": "85c37d72f123ae92136c28a6ed3d8ce7d91eed58",
+  "homepage": "https://github.com/mhthompson86/ng-drag-to-reorder#readme",
+  "keywords": [
+    "AngularJS",
+    "Drag and Drop",
+    "Draggable",
+    "Reorder"
+  ],
+  "license": "MIT",
+  "main": "ngDragToReorder.js",
+  "maintainers": [
+    {
+      "name": "mhthompson86",
+      "email": "mthompson@instant-tech.com"
+    }
+  ],
+  "name": "ng-drag-to-reorder",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhthompson86/ng-drag-to-reorder.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.6"
+}

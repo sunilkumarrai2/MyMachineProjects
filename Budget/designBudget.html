@@ -1,0 +1,86 @@
+<div class="row">
+        <h1 class="text-center" ng-bind="heading"></h1>
+</div>
+<hr>
+<div class="row">
+
+        <!-- 1 ST COLUMN-->
+        <div class="col-md-3">
+                <br><br>
+                <select class="form-control selectpicker" ng-model="budgetMonth" ng-change="selectTimePeriod()" ng-options="item.budget_month for item in allTimePeriods">
+                        <!--<option value="" disabled selected style="display: none;"> {{caption}} </option>-->
+                        <option value="" disabled selected> {{caption}} </option>
+                </select> <br>
+                <!--item.budget_month.substring(item.budget_month.indexOf(" ")+1)+", "+item.budget_month.substring(0,4)-->
+        </div>
+
+        <!--2nd COLUMN   2016, Jan-->
+        <div class="col-md-6 well" ng-show="timePeriodSelected">
+                <p ng-show="hasBudgetInSelectedTimeperiod" class="alert alert-success text-center">You have a budget designed for {{budgetMonth.budget_month.substring(budgetMonth.budget_month.indexOf(" ")+1)+", "+budgetMonth.budget_month.substring(0,4) +", "}}feel free to update it. </p>
+                <p ng-hide="hasBudgetInSelectedTimeperiod" class="alert alert-danger text-center">You <strong>don't</strong> have a budget designed for {{budgetMonth.budget_month.substring(budgetMonth.budget_month.indexOf(" ")+1)+", "+budgetMonth.budget_month.substring(0,4) }}. <strong>Lets create one</strong></p>
+                <div class="form-group">
+                        <input class="form-control input-lg text-center" id="inputlg" type="text" ng-model="amount" ng-disabled = true placeholder="Enter budget amount">
+                </div>
+
+                <table class="table  table-responsive table-striped table-condensed ">
+                        <thead>
+                                <tr>
+                                        <th>Category</th>
+                                        <th>Amount</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr ng-repeat="category in categoriesList">
+                                        <td>{{category.category_name}}</td>
+                                        <td><input ng-hide="isBudgetSubmitted" class="form-group text-center" type="number" ng-model="category.default_amount" ng-change="getSum()"> <span ng-show="isBudgetSubmitted">{{category.default_amount}}</span></td>
+                                        <td>
+                                                <a ng-show = "displaySubmitBudgetButton()" ng-click="removeCategoryDetail($index)" data-toggle="confirmation"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="right" title="Remove"></span></a>
+                                        </td>
+                                </tr>
+                        </tbody>
+                </table>
+                <table class="table table-responsive table-condensed" ng-show = "displaySubmitBudgetButton()">
+                        <thead>
+                                <tr>
+                                        <th>Add new Category</th><th></th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                        <td><input class="form-group text-center" type="text" ng-model="newCategoryName"  placeholder="Category Name"></td>
+                                        <td><input class="form-group text-center" type="number" ng-model="newCategoryAmount"  placeholder="Amount"></td>
+                                        <td>
+                                                <!--<a><span class="glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="right"  ng-click="addNewCategory()" title="Add New Category" ng-disabled="disabledPlus()"></span></a>-->
+                                                <button type="button" class="btn btn-primary" ng-click="addNewCategory()" ng-disabled = "disabledPlus()">
+                                                        <span class="glyphicon glyphicon-plus"></span> Add
+                                                </button>
+                                        </td>
+
+                                </tr>
+                        </tbody>
+                </table>
+        </div>
+
+        <!--3rd COLUMN-->
+        <div class="col-md-3">
+                <br><br>
+                <button ng-show = "displaySubmitBudgetButton()" class="form-control btn btn-primary" ng-click="submitBudget()">Press me when you are done</button> <br><br><br><br>
+                <!--<button ng-hide = "displaySubmitBudgetButton()" class="form-control btn btn-primary" ng-click="submitBudget()">Want to edit again, click me</button>-->
+                <!--<br><br>-->
+                <!--{{categoriesList}}-->
+                <!--<br>-->
+                <!--{{budgetMonth}}-->
+                <div ng-hide="displaySubmitBudgetButton()" class="{{budgetStatusDiv}}">
+							<span  class="text-center">{{budgetStatus}}</span> <br><br>
+                          <a class="{{ediButtonBootstrapClass}}" ng-click="editBudget()">{{editButtonCaption}}</a>
+                </div>
+
+                <!--<span ng-show="showCategoryDetailRemovalStatus" class="{{categoryDetailRemovalStatusDiv}} text-center">{{categoryDetailRemovalStatus}}</span> <br>-->
+                <div ng-show="showCategoryDetailRemovalStatus"class="{{categoryDetailRemovalStatusDiv}}" ng-bind-html="categoryDetailRemovalStatus"></div>
+
+                <!--<span ng-show="showAddNewCategoryStatus" class="{{addNewCategoryStatusDiv}}" ng-bind-html="addNewCategoryStatus"></span> <br>-->
+                <div ng-show="showAddNewCategoryStatus"class="{{addNewCategoryStatusDiv}}" ng-bind-html="addNewCategoryStatus"></div> <br>
+
+
+        </div>
+</div>

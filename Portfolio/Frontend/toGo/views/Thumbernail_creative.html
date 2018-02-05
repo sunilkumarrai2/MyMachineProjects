@@ -1,0 +1,65 @@
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Creative/Character Gallery</h3>
+        <div ng-show="reorderSuccessful" class="alert alert-success">
+            <strong>Success!</strong>
+          </div>
+          <div ng-show="reorderUnsuccessful" class="alert alert-danger">
+            <strong>Failed! Try again</strong>
+          </div>
+          <div ng-show="showDeleteStatus" class="{{deleteStatusDiv}}"><span>{{deleteStatus}}</span></div>
+          <div ng-show="showUpdateHomePicStatus" class="{{showUpdateHomePicStatusDiv}}"><span>{{updateHomePicStatus}}</span></div>
+    </div>
+</div>
+
+<div class="row">
+            <div class="col-lg-12">
+                <!--<ul class="gallery gallery3">-->
+                <ul dnd-list = "images" class="gallery gallery5">
+                    <!--<li ng-repeat="image in images">-->
+                    <!--<li ng-repeat="n in range(0,15)">-->
+                        <li ng-repeat="image in images" dnd-list-id = "{{image.id}}" 
+                                                        dnd-draggable = "image" 
+                                                        dnd-moved = "sorting($index)" 
+                                                        dnd-effect-allowed = "move" 
+                                                        dnd-selected = "models.selected = image" 
+                                                        ng-class = "{'selected':models.selected === image}" ng-right-click="setPicIdToBeSelectedAsHomePic($index)" menu-items="menuItems" menu-class="custom-css-class">
+                            <a ng-click="openLightboxModal($index)">
+                                <!--<img style="width:{{image.width}};height:{{image.height}}" ng-src="{{image.thumbUrl}}" class="img-thumbnail">-->
+                                    <img ng-src="{{image.thumbUrl}}" class="img-thumbnail">
+                            </a>
+                            <a class="close" ng-click="deletePic($index)">×</a>
+                        </li>
+                </ul>
+            </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+            <br>
+            <table class="table table-bordered table-responsive table-striped table-condensed">
+                <thead>
+                    <th class="text-center info">id</th>
+                    <th class="text-center info">url</th>
+                    <th class="text-center info">thumbUrl</th>
+                    <th class="text-center info">height</th>
+                    <th class="text-center info">width</th>
+                    <th class="text-center info">orderIndex</th>
+                    <th class="text-center info">Size in MB</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="i in images">
+                        <td class="text-center">{{i.id}}</td>
+                        <td class="text-center">{{i.url}}</td>
+                        <td class="text-center">{{i.thumbUrl}}</td>
+                        <td class="text-center">{{i.height}}</td>
+                        <td class="text-center">{{i.width}}</td>
+                        <td class="text-center">{{i.orderIndex}}</td>
+                        <td class="text-center">{{i.sizeInMb}}</td>
+                    </tr>
+                </tbody>
+            
+            </table>
+    </div>
+</div>

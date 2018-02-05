@@ -1,0 +1,4 @@
+error_log(print_r($category_detail->category_id, TRUE)); 
+
+
+cd /var/log/apache2/error_log

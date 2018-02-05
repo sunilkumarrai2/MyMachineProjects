@@ -1,0 +1,10 @@
+<ul class="gallery gallery5">
+        <li ng-repeat="image in images">
+            <!--<a prevent-right-click ng-click="openLightboxModal($index)">-->
+            <!--<a oncontextmenu="return disableRightClick();" ng-click="openLightboxModal($index)">-->
+            <a ng-click="openLightboxModal($index)">
+                <!--<img style="width:{{image.width}};height:{{image.height}}" ng-src="{{image.thumbUrl}}" class="img-thumbnail">-->
+                <img ng-src="{{image.thumbUrl}}" class="img-thumbnail">
+            </a>
+        </li>
+</ul>

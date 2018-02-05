@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../Portfolio/Frontend/toGo/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../Portfolio/Frontend/toGo/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="simple.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <!--<script src="a.js"></script>-->
+
+    <script>
+        var app = angular.module("App",['dndLists']);
+
+        app.filter("myFilter", function(){
+            return function(data,index){
+                console.log(data);
+                return data.substring(0,5)+" : "+(parseInt(index)+1);
+                // return "abc";
+            };
+        });
+
+        app.controller("ctrl",ctrl);
+
+        function ctrl($scope,$http) {
+        $scope.temp = "Sunil";
+        $scope.loading = true;
+        $scope.totalBudgetForCurrentMonth = 0;
+        $scope.totalExpensesForCurrentMonth = 0;
+        // $scope.a = {'color':'red'};
+
+        $scope.getStatus = function(){
+            console.log("status");
+        }
+
+        $scope.showIt = true;
+        $scope.data = [{"name":"Sunil","Address":{"Street":"4200 SW 107th Avenue","City":"Beaverton","State":"OR"}},
+                       {"name":"Harshita","Address":{"Street":"4200 SW 107th Avenue","City":"Beaverton","State":"OR"}},
+                       {"name":"Anil","Address":{"Street":"123 SW 10th Avenue ","City":"Kent","State":"LA"}},
+                       {"name":"Angela","Address":{"Street":"123 SW 10th Avenue ","City":"Kent","State":"LA"}},];
+
+        $scope.clickFunc = function(event){
+            console.log(event);
+        }
+
+        }
+    </script>
+    <script src="../Portfolio/Frontend/toGo/js/lib/ng-drag-to-reorder/ngDragToReorder.js"></script>
+    <script src="angular-sortable-view.min.js"></script>
+    <script src="angular-drag-and-drop-lists.js"></script>
+
+    <style>
+        .negative {color:red}
+        .loader {
+          border: 16px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 16px solid #3498db;
+          width: 120px;
+          height: 120px;
+          -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+        }
+        
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        </style>
+
+    <title>Title</title>
+</head>
+<body ng-app="App">
+    
+    <div class = "container" ng-controller="ctrl">
+            Budget = <input type="number" ng-model="totalBudgetForCurrentMonth" ng-change="getStatus()"  />
+            Expense = <input type="number" ng-model="totalExpensesForCurrentMonth" ng-change="getStatus()" />
+        <br>
+        
+        <div ng-switch on="totalBudgetForCurrentMonth">
+            <div ng-switch-when="1">Sunil</div>
+            <div ng-switch-when="2">Harshita</div>
+            <div ng-switch-when="3">Anil</div>
+            <div ng-switch-when="4">Angela</div>
+            <div ng-switch-when="5">
+                    <h1 class="text-center text-success" ng-class="{negative:totalExpensesForCurrentMonth > totalBudgetForCurrentMonth}">{{temp}}</h1>           
+            </div>
+            <div ng-switch-when="6">
+                    <div ng-include="myData.showIt && 'temp2.html' || 'temp1.html'"></div>
+            </div>
+            <div ng-switch-default>
+                    <div class="loader"></div>
+                    <table class="table table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in data">
+                                    <td class="text-center">{{item.name}}</td>
+                                    <td class="text-center" ng-click="clickFunc($event)">{{item.Address.Street | myFilter:$index}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+</body>
+</html>
+

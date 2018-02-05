@@ -1,0 +1,137 @@
+.gallery {
+  padding: 0;
+}
+
+.gallery li {
+  display: inline-block;
+  margin: 0 1em 1em 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .gallery li {
+    margin: 0;
+  }
+}
+
+.gallery1 img {
+  width: 200px;
+  height: 150px;
+}
+
+.gallery2 img {
+  width: 6em;
+}
+
+.gallery5 img {
+  width: 120px;
+  /*width: 240px;*/
+  /*height: 150px;*/
+}
+
+/*This was required to not display the 'open in new tab' button from Modal window*/
+.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+    border-radius: 0;
+    display: none;
+}
+
+/*This was required to make the individual page heading be in center*/
+.col-lg-12 {text-align: center}
+
+/* It is to make some margin(from left) for HOME button in nav. It was needed to make it look in mobile screen*/
+.navbar-brand>span {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+
+.result{
+/*    background-color: #c4c2c6;*/
+    background-color: #999999;
+/*    text-align: center;*/
+    margin-left: 110px;
+    margin-right: 40px;
+    height: 50px;
+    padding-top: 12px;
+    padding-left: 80px;
+    color: aliceblue;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
+
+.fade.ng-hide {
+  opacity: 0;
+}
+
+.loader {
+  margin-top: 8px;
+  margin-right: 5px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 5px;
+  height: 5px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/*For Profile card*/
+/*Begin*/
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.container1 {
+  padding: 0 16px;
+}
+
+.container1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title1 {
+  color: grey;
+  font-size: 18px;
+}
+
+.button_cus {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.a{
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.button_cus:hover, a:hover {
+  opacity: 0.7;
+}
+/*End*/

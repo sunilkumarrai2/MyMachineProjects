@@ -1,0 +1,20 @@
+/*body {*/
+  /*padding: 50px;*/
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+/*}*/
+
+/*a {*/
+  /*color: #00B7FF;*/
+/*}*/
+
+/*.well {*/
+    /*background: rgb(22, 105, 173);*/
+/*}*/
+
+.well{
+/*background-color: cyan !important;*/
+/*background-color: #f4e1e1;*/
+  background-color: #e4fbe1;
+}
+
+.negative {color:red}
